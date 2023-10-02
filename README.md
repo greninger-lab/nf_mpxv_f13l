@@ -4,12 +4,12 @@ MPXV consensus genome assembly and variants reporting in F13L using **ON563414.3
 
 ## Methods
 
-- Trim reads with Trimmomatic (default minimum length 100bp)
-- Consensus genome assembly using BBMap, Samtools and iVar consensus
+- Trim reads with fastp (default minimum length 100bp)
+- Consensus genome assembly using BBMap and iVar consensus
     - minimum coverage of 10
     - minimum base quality of 20
     - minimum frequency threshold of 0.6 
-- Variants reporting in F13L using Samtools and iVar variants
+- Variants reporting in F13L using iVar variants
     - minimum coverage of 10
     - minimum base quality of 20
     - minimum frequency threshold of 0.01
@@ -47,6 +47,7 @@ on AWS:
 | `--ivar_variants_t` | minimum frequency threshold to call consensus (default: 0.01) |
 | `--ivar_variants_q` | minimum quality score threshold to call consensus (default: 20) |
 | `--ivar_variants_m` | minimum depth to call consensus (default: 10) |
+| `--save_mpileup` | save samtools mpileup used for iVar variants |
 | `--ivar_consensus_t` | minimum frequency threshold to call consensus (default: 0.6) |
 | `--ivar_consensus_q` | minimum quality score threshold to call consensus (default: 20) |
 | `--ivar_consensus_m` | minimum depth to call consensus (default: 10) |
