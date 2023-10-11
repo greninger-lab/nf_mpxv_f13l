@@ -1,6 +1,6 @@
 process BBMAP_ALIGN_REF {
     tag "${meta.id}}"
-    label 'process_medium'
+    label 'process_medium_java'
     container 'greningerlab/revica:ubuntu-20.04'
 
     input:

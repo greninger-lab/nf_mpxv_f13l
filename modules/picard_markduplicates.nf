@@ -1,6 +1,6 @@
 process PICARD_MARKDUPLICATES {
     tag "${meta.id}"
-    label 'process_medium'
+    label 'process_medium_java'
     container 'biocontainers/picard:3.0.0--hdfd78af_1'
 
     input:
