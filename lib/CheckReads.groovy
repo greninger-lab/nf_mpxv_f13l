@@ -42,12 +42,13 @@ class CheckReads {
     }
 
 	//
-	// Create MultiQC tsv custom content from a list of values
+	// Append summary stats for failed (trimming/mapping) samples
 	//
-	public static String multiqcTsvFromList(tsv_data, header) {
+	public static String tsvFromList(tsv_data) {
+		def default_header = ["sample_name","raw_reads","trimmed_reads","pct_reads_trimmed","mapped_reads","pct_reads_mapped","pct_genome_covered","mean_genome_coverage","pct_F13L_covered","mean_F13L_coverage","pct_F13L_50x","pct_F13L_100    x","consensus_length","num_ns","pct_ns","num_ambiguous"]
         def tsv_string = ""
-        if (tsv_data.size() > 0) {
-            tsv_string += "${header.join('\t')}\n"
+        if (tsv_data.size() > 0 ){
+            tsv_string += "${default_header.join('\t')}\n"
             tsv_string += "${tsv_data.join('\n')}\n"
         }
         return tsv_string

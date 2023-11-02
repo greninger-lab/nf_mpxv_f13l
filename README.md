@@ -44,7 +44,7 @@ on AWS:
 | `--trim_len` | minimum read length to keep (default:100) |
 | `--save_trimmed_reads` | save trimmed fastq (default: false) |
 | `--sample` | downsample fastq to a certain fraction or number of reads |
-| `--min_mapped_reads` | minimum number of mapped reads for variants and consensus calling |
+| `--min_mapped_reads` | minimum number of mapped reads for variants and consensus calling (default: 1000) |
 | `--ivar_variants_t` | minimum frequency threshold to call consensus (default: 0.01) |
 | `--ivar_variants_q` | minimum quality score threshold to call consensus (default: 20) |
 | `--ivar_variants_m` | minimum depth to call consensus (default: 10) |

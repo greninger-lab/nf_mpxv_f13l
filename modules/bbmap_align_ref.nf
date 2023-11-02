@@ -9,8 +9,6 @@ process BBMAP_ALIGN_REF {
 
     output:
     tuple val(meta), path("*.sorted.bam"), path("*.sorted.bam.bai"),    emit: bam
-    tuple val(meta), path(ref),                                         emit: ref
-    tuple val(meta), path(fastq),                                       emit: reads
     tuple val(meta), path("*.flagstat"),                                emit: flagstat
     tuple val(meta), path("*.log"),                                     emit: log
 

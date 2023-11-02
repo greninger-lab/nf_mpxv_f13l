@@ -4,7 +4,7 @@ process SUMMARY {
     container 'greningerlab/revica:ubuntu-20.04'
 
     input:
-    tuple val(meta), path(map_ref_bam), path(map_ref_bai), path(consensus), path(fastp_trim_log)
+    tuple val(meta), path(consensus), path(map_ref_bam), path(map_ref_bai), path(fastp_trim_log)
 
     output:
     path("*.tsv"), emit: summary
