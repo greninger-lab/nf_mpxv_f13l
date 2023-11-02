@@ -11,6 +11,7 @@ process BBMAP_ALIGN_REF {
     tuple val(meta), path("*.sorted.bam"), path("*.sorted.bam.bai"),    emit: bam
     tuple val(meta), path(ref),                                         emit: ref
     tuple val(meta), path(fastq),                                       emit: reads
+    tuple val(meta), path("*.flagstat"),                                emit: flagstat
     tuple val(meta), path("*.log"),                                     emit: log
 
     when:
@@ -48,5 +49,8 @@ process BBMAP_ALIGN_REF {
     samtools view -b -F 4 -@ ${task.cpus} ${prefix}.bam -o ${prefix}_mapped.bam           
     samtools sort -@ ${task.cpus} -o ${prefix}.sorted.bam ${prefix}_mapped.bam  
     samtools index -@ ${task.cpus} ${prefix}.sorted.bam 
+
+    # generate alignment statistics
+    samtools flagstats -@ ${task.cpus} ${prefix}.sorted.bam > ${prefix}.flagstat
     """
 }

@@ -44,6 +44,7 @@ on AWS:
 | `--trim_len` | minimum read length to keep (default:100) |
 | `--save_trimmed_reads` | save trimmed fastq (default: false) |
 | `--sample` | downsample fastq to a certain fraction or number of reads |
+| `--min_mapped_reads` | minimum number of mapped reads for variants and consensus calling |
 | `--ivar_variants_t` | minimum frequency threshold to call consensus (default: 0.01) |
 | `--ivar_variants_q` | minimum quality score threshold to call consensus (default: 20) |
 | `--ivar_variants_m` | minimum depth to call consensus (default: 10) |
@@ -57,8 +58,7 @@ on AWS:
 - You can create a samplesheet using the bundled python script: `python bin/fastq_dir_samplesheet.py fastq_dir samplesheet_name.csv`
 - Memory and CPU usage for pipeline processes can be adjusted in `conf/base.config`
 - Process arguments can be adjusted in `conf/modules.config`
-- If you are using Docker on Linux, check out these [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) (especially cgroup swap limit capabilities support) for configuring Linux to work better with Docker. 
-- By default, Docker has full access to full RAM and CPU resources of the host, but if you are using MacOS, go to Settings -> Resources in Docker Desktop to make sure enough resources are allocated to docker containers. 
+- If you are using Docker on Linux, check out these [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) (especially cgroup swap limit capabilities support) for configuring Linux to work better with Docker.- By default, Docker has full access to full RAM and CPU resources of the host, but if you are using MacOS, go to Settings -> Resources in Docker Desktop to make sure enough resources are allocated to docker containers. 
 
 ## Contact
 For bug reports please email aseree@uw.edu or raise an issue on Github.
