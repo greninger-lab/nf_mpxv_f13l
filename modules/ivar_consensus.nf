@@ -8,9 +8,9 @@ process IVAR_CONSENSUS {
     tuple val(meta), path(ref)
 
     output:
-    tuple val(meta), path("*.fa"),          emit: consensus
-    tuple val(meta), path("*.qual.txt"),    emit: qual
-    tuple val(meta), path("*.mpileup"),     optional:true, emit: mpileup
+    tuple val(meta), path("*consensus*.fa"),    emit: consensus
+    tuple val(meta), path("*.qual.txt"),        emit: qual
+    tuple val(meta), path("*.mpileup"),         emit: mpileup, optional:true
 
     when:
     task.ext.when == null || task.ext.when

@@ -68,7 +68,7 @@ workflow FASTQ_TRIM_FASTP_FASTQC {
             .join(ch_trim_json)
             .map {
                 meta, reads, json ->
-                    if (getFastpReadsAfterFiltering(json) > 10000 ) {
+                    if (getFastpReadsAfterFiltering(json) > 0 ) {
                         [ meta, reads ]
                     }
             }
