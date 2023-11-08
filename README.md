@@ -20,17 +20,17 @@ Install [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#install
 
 Install [`Docker`](https://docs.docker.com/engine/installation/)
 
-To run Revica:
+To run this pipeline:
 
-	nextflow run asereewit/nf_mpxv_f13l -r main -latest --input example_samplesheet.csv --output example_output
+	nextflow run greninger-lab/nf_mpxv_f13l -r main -latest --input example_samplesheet.csv --output example_output
 
 with Docker:
 
-	nextflow run asereewit/nf_mpxv_f13l -r main -latest --input example_samplesheet.csv --output example_output -profile docker
+	nextflow run greninger-lab/nf_mpxv_f13l -r main -latest --input example_samplesheet.csv --output example_output -profile docker
 
 on AWS:
     
-	nextflow run asereewit/nf_mpxv_f13l -r main -latest --input example_samplesheet.csv --output example_output -profile docker -c your_nextflow_aws.config
+	nextflow run greninger-lab/nf_mpxv_f13l -r main -latest --input example_samplesheet.csv --output example_output -profile docker -c your_nextflow_aws.config
 	
 
 ## Options
