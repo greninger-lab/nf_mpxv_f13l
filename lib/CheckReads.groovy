@@ -45,7 +45,7 @@ class CheckReads {
 	// Append summary stats for failed (trimming/mapping) samples
 	//
 	public static String tsvFromList(tsv_data) {
-		def default_header = ["sample_name","raw_reads","trimmed_reads","pct_reads_trimmed","mapped_reads","pct_reads_mapped","pct_genome_covered","mean_genome_coverage","pct_F13L_covered","mean_F13L_coverage","pct_F13L_50x","pct_F13L_100    x","consensus_length","num_ns","pct_ns","num_ambiguous"]
+		def default_header = ["sample_name","raw_reads","trimmed_reads","pct_reads_trimmed","mapped_reads","pct_reads_mapped","pct_genome_covered","mean_genome_coverage","pct_F13L_covered","mean_F13L_coverage","pct_F13L_50x","pct_F13L_100x","consensus_length","num_ns","pct_ns","num_ambiguous"]
         def tsv_string = ""
         if (tsv_data.size() > 0 ){
             tsv_string += "${default_header.join('\t')}\n"

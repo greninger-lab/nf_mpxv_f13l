@@ -9,7 +9,7 @@ include { IVAR_CONSENSUS_BBMAP_ALIGN as IVAR_CONSENSUS_BBMAP_ALIGN_FINAL    } fr
 workflow CONSENSUS_ASSEMBLY {                                                 
     take:                                                                          
     ch_bam      // channel: [ val(meta), path(bam), path(bai) ]                  
-    ch_ref      // channel: path(ref)
+    ch_ref      // channel: [ val(meta), path(ref) ]
     ch_reads    // channel: [ val(meta), path(reads) ]
                                                                                 
     main:                                                                          
