@@ -31,9 +31,14 @@ process IVAR_CONSENSUS {
             -p $prefix \\
             -i $prefix
 
-    # removing leading and trailing Ns
-    awk '/^>/ {print; next} {sub(/^N+/, ""); printf "%s", \$0} END {print ""}' ${prefix}.fa > ${prefix}_temp.fa
-    sed '/^>/!s/N\\+\$//' ${prefix}_temp.fa > ${prefix}.fa
+    # get rid of linebreaks except the header line
+    awk '/^>/ {printf "%s\\n", \$0; next} {printf "%s", \$0} END {print ""}' ${prefix}.fa > ${prefix}_temp.fa
+    # remove leading Ns
+    sed '/^>/!s/^N\\+//' ${prefix}_temp.fa > ${prefix}_temp_frontNtrimmed.fa
+    # remove trailing Ns
+    sed '/^>/!s/N\\+\$//' ${prefix}_temp_frontNtrimmed.fa > ${prefix}.fa
+
     rm ${prefix}_temp.fa
+    rm ${prefix}_temp_frontNtrimmed.fa
     """
 }
