@@ -1,7 +1,7 @@
 process F13L_VARIANTS {
     tag "${meta.id}}"
     label 'process_medium'
-    container 'greningerlab/revica:ubuntu-20.04'
+    container 'sereewit/ivar:1.4.2_49079e2'
 
     input:
     tuple val(meta), path(bam), path(bai)
