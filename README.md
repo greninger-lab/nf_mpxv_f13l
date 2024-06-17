@@ -41,6 +41,7 @@ on AWS:
 | `--run_name` | name for the summary tsv file (default: 'run') |
 | `--skip_fastqc` | skip quality control using FastQC (default: false) |
 | `--skip_fastp` | skip adapters and reads trimming using fastp (default: false) |
+| `--min_trim_reads` | mininum number of trimmed reads required for downstream processes (default: 0) |
 | `--trim_len` | minimum read length to keep (default:100) |
 | `--save_trimmed_reads` | save trimmed fastq (default: false) |
 | `--sample` | downsample fastq to a certain fraction or number of reads |
