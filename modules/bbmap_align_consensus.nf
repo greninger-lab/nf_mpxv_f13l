@@ -1,7 +1,7 @@
 process BBMAP_ALIGN_CONSENSUS {
     tag "${meta.id}}"
     label 'process_medium_java'
-    container 'greningerlab/revica:ubuntu-20.04'
+    container 'quay.io/jefffurlong/revica:ubuntu-20.04'
 
     input:
     tuple val(meta), path(fastq)
