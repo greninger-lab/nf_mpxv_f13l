@@ -1,0 +1,1 @@
+sample_name	raw_reads	trimmed_reads	pct_reads_trimmed	mapped_reads	pct_reads_mapped	pct_genome_covered	mean_genome_coverage	pct_F13L_covered	mean_F13L_coverage	pct_F13L_50x	pct_F13L_100x	consensus_length	num_ns	pct_ns	num_ambiguous
