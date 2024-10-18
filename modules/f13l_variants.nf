@@ -1,7 +1,7 @@
 process F13L_VARIANTS {
     tag "${meta.id}}"
     label 'process_medium'
-    container 'quay.io/sereewit/ivar:1.4.2_49079e2'
+    container 'quay.io/jefffurlong/ivar:1.4.3'
 
     input:
     tuple val(meta), path(bam), path(bai)
@@ -41,6 +41,7 @@ process F13L_VARIANTS {
     edit_f13l_variants.py \\
         ${prefix}.tsv \\
         $gff \\
+        $ref \\
         ${prefix}.reformatted
     """
 }

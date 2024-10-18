@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     openjdk-11-jdk bc python3 python3-pip wget libncurses5-dev bzip2 gcc g++ make zlib1g-dev libbz2-dev liblzma-dev unzip autoconf \
 	# ----------
 	# pandas for python
-	&& pip3 install pandas \
+	&& pip3 install pandas biopython \
     # ---------- 
     # samtools
     && cd /tmp \
