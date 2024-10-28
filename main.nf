@@ -2,6 +2,9 @@
 
 // if INPUT not set
 if (params.input) { ch_input = file(params.input) } else { exit 1, 'Input samplesheet not specified!' }
+if (params.trim_primers) { 
+    if (params.bed_file) { ch_bed_file = file(params.bed_file) } else { exit 1, 'trim_primers flag is set, but no bed file is provided!' }
+}
 
 // Config file
 ch_summary_dummy_file = file("$baseDir/assets/summary_dummy_file.tsv", checkIfExists: true)
@@ -18,6 +21,9 @@ include { CONSENSUS_ASSEMBLY        } from './subworkflows/consensus_assembly'
 //
 include { SEQTK_SAMPLE      } from './modules/seqtk_sample'
 include { BBMAP_ALIGN_REF   } from './modules/bbmap_align_ref'
+include { IVAR_TRIM         } from './modules/ivar_trim'
+include { SAMTOOLS_SORT     } from './modules/samtools_sort'
+include { SAMTOOLS_INDEX    } from './modules/samtools_index'
 include { F13L_VARIANTS     } from './modules/f13l_variants'
 include { SUMMARY           } from './modules/summary'
 include { SUMMARY_CLEANUP   } from './modules/summary_cleanup'
@@ -64,6 +70,27 @@ workflow {
         params.ref
     )
 
+    if (params.trim_primers) {
+        IVAR_TRIM (
+            BBMAP_ALIGN_REF.out.bam,
+            ch_bed_file
+        )
+
+        SAMTOOLS_SORT (
+            IVAR_TRIM.out.bam,
+            IVAR_TRIM.out.bam.map { [it[0], [params.ref]]}
+        )
+
+        SAMTOOLS_INDEX (
+            SAMTOOLS_SORT.out.bam
+        )
+
+        SAMTOOLS_SORT.out.bam.join(SAMTOOLS_INDEX.out.bai).set { ch_bam }
+        
+    } else {
+        ch_bam = BBMAP_ALIGN_REF.out.bam
+    }
+
     BBMAP_ALIGN_REF.out.flagstat                                                   
         .map { meta, flagstat -> [ meta ] + CheckReads.getFlagstatMappedReads(flagstat, params) }
         .set { ch_mapped_reads }
@@ -82,7 +109,7 @@ workflow {
     ch_mapped_reads
         .map { meta, mapped, pass -> if (pass) [ meta ] }
         .join(ch_align_reads, by: [0])
-        .join(BBMAP_ALIGN_REF.out.bam, by: [0])
+        .join(ch_bam, by: [0])
         .multiMap { meta, reads, bam, bai ->
             reads:  [ meta, reads ]
             ref:    [ meta, params.ref ]
