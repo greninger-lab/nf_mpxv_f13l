@@ -53,6 +53,9 @@ on AWS:
 | `--ivar_consensus_t` | minimum frequency threshold to call consensus (default: 0.6) |
 | `--ivar_consensus_q` | minimum quality score threshold to call consensus (default: 20) |
 | `--ivar_consensus_m` | minimum depth to call consensus (default: 10) |
+| `--trim_primers` | trim primers, requires bed file (default: false) |
+| `--bed_file` | bed file containing primer coordinates (required if --trim_primers flag is set) |
+
 
 ## Usage notes
 - Samplesheet example: `assets/samplesheet.csv`
